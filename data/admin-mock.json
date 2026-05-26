@@ -1,0 +1,40 @@
+{
+  "buildings": [
+    {
+      "id": "bldg-las-condes-001",
+      "name": "Edificio Los Alerces",
+      "address": "Las Condes 1234, Las Condes, RM",
+      "units": 80,
+      "commune": "Las Condes",
+      "city": "Santiago",
+      "country": "Chile"
+    },
+    {
+      "id": "bldg-nunoa-002",
+      "name": "Condominio Plaza Ñuñoa",
+      "address": "Irarrazaval 4567, Ñuñoa, RM",
+      "units": 120,
+      "commune": "Ñuñoa",
+      "city": "Santiago",
+      "country": "Chile"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "exp-001",
+      "buildingId": "bldg-las-condes-001",
+      "period": "2026-05",
+      "total": 12500000,
+      "currency": "CLP",
+      "status": "published"
+    },
+    {
+      "id": "exp-002",
+      "buildingId": "bldg-nunoa-002",
+      "period": "2026-05",
+      "total": 18750000,
+      "currency": "CLP",
+      "status": "draft"
+    }
+  ]
+}
