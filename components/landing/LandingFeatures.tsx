@@ -67,8 +67,8 @@ export function LandingFeatures() {
             key={f.title}
             className="group cursor-default rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-lg"
           >
-            <div className={`mb-4 inline-flex h-16 w-16 items-center justify-center rounded-xl ${f.color}`}>
-              <Image src={f.icon} alt={f.title} width={56} height={56} className="object-contain" />
+            <div className={`mb-4 inline-flex h-24 w-24 items-center justify-center rounded-xl ${f.color}`}>
+              <Image src={f.icon} alt={f.title} width={84} height={84} className="object-contain" />
             </div>
             <h3 className="mb-2 text-sm font-medium text-slate-900">{f.title}</h3>
             <p className="mb-4 text-xs font-light leading-relaxed text-slate-500">{f.desc}</p>
