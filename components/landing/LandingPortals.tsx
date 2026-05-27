@@ -69,7 +69,7 @@ export function LandingPortals() {
           >
             <div className={`absolute left-0 right-0 top-0 h-1 bg-gradient-to-r ${p.accent}`} />
             <div className="mb-5">
-              <Image src={p.icon} alt={p.name} width={120} height={120} className="object-contain" />
+              <Image src={p.icon} alt={p.name} width={240} height={240} className="object-contain" />
             </div>
             <h3 className="mb-2 text-base font-medium text-slate-900">{p.name}</h3>
             <p className="mb-5 text-sm font-light leading-relaxed text-slate-500">{p.desc}</p>
