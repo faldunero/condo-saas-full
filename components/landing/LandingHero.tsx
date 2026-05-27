@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 
 export function LandingHero() {
   return (
     <section
       style={{
-        background: "linear-gradient(160deg,#0D4A75 0%,#1D6FA4 50%,#1a8a7a 100%)",
+        backgroundImage: "url(/imagenes/banner_headear_index.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
         minHeight: "90vh",
         display: "flex",
         flexDirection: "column",
@@ -15,6 +17,16 @@ export function LandingHero() {
         overflow: "hidden",
       }}
     >
+      {/* Overlay gradient para mejor legibilidad */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(160deg,rgba(13,74,117,0.75) 0%,rgba(29,111,164,0.75) 50%,rgba(26,138,122,0.75) 100%)",
+          pointerEvents: "none",
+        }}
+      />
+
       {/* Grid background */}
       <div
         style={{
@@ -88,17 +100,6 @@ export function LandingHero() {
             Gastos comunes, asambleas, transparencia financiera y cumplimiento
             legal en un solo lugar.
           </p>
-
-          <div className="mb-8 w-full max-w-2xl">
-            <Image
-              src="/imagenes/banner_headear_index.png"
-              alt="CondoManager - Plataforma de Gestión Integral"
-              width={800}
-              height={450}
-              className="rounded-xl shadow-2xl"
-              priority
-            />
-          </div>
 
           <div className="mb-6 flex flex-wrap gap-3">
             <Link
