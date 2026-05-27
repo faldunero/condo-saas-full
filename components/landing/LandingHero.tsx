@@ -89,6 +89,17 @@ export function LandingHero() {
             legal en un solo lugar.
           </p>
 
+          <div className="mb-8 w-full max-w-2xl">
+            <Image
+              src="/imagenes/banner_headear_index.png"
+              alt="CondoManager - Plataforma de Gestión Integral"
+              width={800}
+              height={450}
+              className="rounded-xl shadow-2xl"
+              priority
+            />
+          </div>
+
           <div className="mb-6 flex flex-wrap gap-3">
             <Link
               href="/admin"
@@ -107,17 +118,6 @@ export function LandingHero() {
             >
               Ver cómo funciona
             </Link>
-          </div>
-
-          <div className="mt-8 w-full max-w-2xl">
-            <Image
-              src="/imagenes/banner_headear_index.png"
-              alt="CondoManager - Plataforma de Gestión Integral"
-              width={800}
-              height={450}
-              className="rounded-xl shadow-2xl"
-              priority
-            />
           </div>
 
           <div
