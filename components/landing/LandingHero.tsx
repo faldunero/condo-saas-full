@@ -202,3 +202,5 @@ export function LandingHero() {
     </section>
   );
 }
+
+export default LandingHero;
