@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export function LandingHero() {
   return (
@@ -106,6 +107,17 @@ export function LandingHero() {
             >
               Ver cómo funciona
             </Link>
+          </div>
+
+          <div className="mt-8 w-full max-w-2xl">
+            <Image
+              src="/imagenes/banner_headear_index.png"
+              alt="CondoManager - Plataforma de Gestión Integral"
+              width={800}
+              height={450}
+              className="rounded-xl shadow-2xl"
+              priority
+            />
           </div>
 
           <div
