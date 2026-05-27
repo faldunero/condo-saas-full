@@ -7,7 +7,7 @@ export function LandingStats() {
   ];
 
   return (
-    <div className="flex justify-center gap-16 border-b border-slate-200 bg-white px-8 py-7">
+    <div className="grid grid-cols-2 gap-6 border-b border-slate-200 bg-white px-6 py-7 md:flex md:justify-center md:gap-16 md:px-8">
       {stats.map((s) => (
         <div key={s.l} className="text-center">
           <p className="font-serif text-3xl font-semibold text-blue-700">{s.n}</p>

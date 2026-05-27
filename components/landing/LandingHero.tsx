@@ -1,15 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 
 export function LandingHero() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <section
       style={{
         backgroundImage: "url(/imagenes/banner_headear_index.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed",
         minHeight: "90vh",
         display: "flex",
         flexDirection: "column",
@@ -17,155 +19,109 @@ export function LandingHero() {
         overflow: "hidden",
       }}
     >
-      {/* Overlay gradient para mejor legibilidad */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "linear-gradient(160deg,rgba(13,74,117,0.75) 0%,rgba(29,111,164,0.75) 50%,rgba(26,138,122,0.75) 100%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* Grid background */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "repeating-linear-gradient(0deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 60px),repeating-linear-gradient(90deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 80px)",
-          pointerEvents: "none",
-        }}
-      />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,rgba(13,74,117,0.75) 0%,rgba(29,111,164,0.75) 50%,rgba(26,138,122,0.75) 100%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(0deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 60px),repeating-linear-gradient(90deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 80px)", pointerEvents: "none" }} />
 
       {/* Nav */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-5">
+      <nav className="relative z-10 flex items-center justify-between px-6 py-5 md:px-8">
         <span className="font-serif text-2xl font-semibold text-white">
           Condo<span style={{ color: "#5DCAA4" }}>SaaS</span>
         </span>
-        <div className="flex items-center gap-2">
+
+        {/* Desktop nav */}
+        <div className="hidden items-center gap-2 md:flex">
           {[
             { label: "Funciones", href: "#funciones" },
             { label: "Portales", href: "#portales" },
             { label: "Ley 21.442", href: "#ley" },
             { label: "Precios", href: "#precios" },
           ].map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="rounded-md px-3 py-2 text-sm text-white/75 transition-colors hover:bg-white/10 hover:text-white"
-            >
+            <a key={l.href} href={l.href} className="rounded-md px-3 py-2 text-sm text-white/75 transition-colors hover:bg-white/10 hover:text-white">
               {l.label}
             </a>
           ))}
-          <Link
-            href="/admin"
-            className="ml-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors"
-            style={{ background: "#E67E22" }}
-          >
+          <Link href="/admin" className="ml-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors" style={{ background: "#E67E22" }}>
             Solicitar demo →
           </Link>
         </div>
+
+        {/* Mobile hamburger */}
+        <button className="flex h-9 w-9 items-center justify-center rounded-lg text-white md:hidden" style={{ background: "rgba(255,255,255,0.15)" }} onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? "✕" : "☰"}
+        </button>
       </nav>
 
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="relative z-10 mx-4 mb-2 rounded-xl p-4 md:hidden" style={{ background: "rgba(13,27,42,0.95)", border: "1px solid rgba(255,255,255,0.15)" }}>
+          {[
+            { label: "Funciones", href: "#funciones" },
+            { label: "Portales", href: "#portales" },
+            { label: "Ley 21.442", href: "#ley" },
+            { label: "Precios", href: "#precios" },
+          ].map((l) => (
+            <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} className="block rounded-lg px-4 py-3 text-sm text-white/80 hover:bg-white/10">
+              {l.label}
+            </a>
+          ))}
+          <Link href="/admin" onClick={() => setMenuOpen(false)} className="mt-2 block rounded-lg px-4 py-3 text-center text-sm font-medium text-white" style={{ background: "#E67E22" }}>
+            Solicitar demo →
+          </Link>
+        </div>
+      )}
+
       {/* Body */}
-      <div className="relative z-10 flex flex-1 items-center gap-12 px-8 pb-16 pt-4">
+      <div className="relative z-10 flex flex-1 flex-col items-center gap-10 px-6 pb-12 pt-4 md:flex-row md:items-center md:gap-12 md:px-8 md:pb-16">
         {/* Left */}
-        <div className="max-w-xl flex-1">
-          <div
-            className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs"
-            style={{
-              background: "rgba(255,255,255,0.15)",
-              border: "1px solid rgba(255,255,255,0.25)",
-              color: "rgba(255,255,255,0.9)",
-            }}
-          >
-            <span
-              className="inline-block h-1.5 w-1.5 animate-pulse rounded-full"
-              style={{ background: "#5DCAA4" }}
-            />
+        <div className="w-full max-w-xl flex-1">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs" style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.9)" }}>
+            <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full" style={{ background: "#5DCAA4" }} />
             Conforme con Ley de Copropiedad 21.442
           </div>
 
-          <h1
-            className="mb-5 font-serif text-5xl font-semibold leading-tight tracking-tight text-white"
-          >
+          <h1 className="mb-5 font-serif text-4xl font-semibold leading-tight tracking-tight text-white md:text-5xl">
             Gestión de condominios{" "}
             <em style={{ color: "#5DCAA4", fontStyle: "italic" }}>simple,</em>
             <br />legal y transparente
           </h1>
 
-          <p className="mb-8 text-lg font-light leading-relaxed text-white/75">
-            Plataforma SaaS para administradoras, comités y residentes.
-            Gastos comunes, asambleas, transparencia financiera y cumplimiento
-            legal en un solo lugar.
+          <p className="mb-8 text-base font-light leading-relaxed text-white/75 md:text-lg">
+            Plataforma SaaS para administradoras, comités y residentes. Gastos comunes, asambleas, transparencia financiera y cumplimiento legal en un solo lugar.
           </p>
 
           <div className="mb-6 flex flex-wrap gap-3">
-            <Link
-              href="/admin"
-              className="rounded-xl px-7 py-3 text-sm font-medium text-white transition-all hover:-translate-y-0.5"
-              style={{ background: "#E67E22" }}
-            >
+            <Link href="/admin" className="rounded-xl px-7 py-3 text-sm font-medium text-white transition-all hover:-translate-y-0.5" style={{ background: "#E67E22" }}>
               Comenzar gratis
             </Link>
-            <Link
-              href="/residente"
-              className="rounded-xl px-7 py-3 text-sm text-white transition-all hover:bg-white/20"
-              style={{
-                background: "rgba(255,255,255,0.12)",
-                border: "1.5px solid rgba(255,255,255,0.3)",
-              }}
-            >
+            <Link href="/residente" className="rounded-xl px-7 py-3 text-sm text-white transition-all hover:bg-white/20" style={{ background: "rgba(255,255,255,0.12)", border: "1.5px solid rgba(255,255,255,0.3)" }}>
               Ver cómo funciona
             </Link>
           </div>
 
-          <div
-            className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-xs font-light text-white/80"
-            style={{
-              background: "rgba(255,255,255,0.1)",
-              border: "1px solid rgba(255,255,255,0.2)",
-            }}
-          >
+          <div className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-xs font-light text-white/80" style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}>
             ⚖️ Cumplimiento automático: Arts. 24, 35, 38 y 47 Ley 21.442
           </div>
         </div>
 
-        {/* Dashboard preview card */}
-        <div className="w-96 flex-shrink-0">
-          <div
-            className="overflow-hidden rounded-2xl"
-            style={{
-              background: "rgba(255,255,255,0.97)",
-              boxShadow: "0 32px 80px rgba(0,0,0,0.3)",
-              border: "1px solid rgba(255,255,255,0.5)",
-            }}
-          >
-            <div
-              className="flex items-center gap-3 px-5 py-3"
-              style={{ background: "#0D4A75" }}
-            >
+        {/* Dashboard card — oculto en móvil */}
+        <div className="hidden w-96 flex-shrink-0 md:block">
+          <div className="overflow-hidden rounded-2xl" style={{ background: "rgba(255,255,255,0.97)", boxShadow: "0 32px 80px rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.5)" }}>
+            <div className="flex items-center gap-3 px-5 py-3" style={{ background: "#0D4A75" }}>
               <div className="flex gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
                 <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
               </div>
-              <span className="ml-auto text-xs text-white/60">
-                Edificio Los Alerces · May 2026
-              </span>
+              <span className="ml-auto text-xs text-white/60">Edificio Los Alerces · May 2026</span>
             </div>
             <div className="p-5">
               <div className="mb-4 flex items-start justify-between">
                 <div>
                   <p className="mb-1 text-xs text-slate-500">Gasto común mensual</p>
-                  <p className="font-serif text-2xl font-semibold text-slate-900">
-                    $12.500.000
-                  </p>
+                  <p className="font-serif text-2xl font-semibold text-slate-900">$12.500.000</p>
                 </div>
                 <span className="text-xs font-medium text-emerald-600">↑ 3.2% IPC</span>
               </div>
-
               <div className="mb-4 grid grid-cols-2 gap-2">
                 {[
                   { l: "Unidades pagadas", v: "58 / 80", c: "text-emerald-600" },
@@ -179,7 +135,6 @@ export function LandingHero() {
                   </div>
                 ))}
               </div>
-
               <div className="mb-2 flex justify-between border-b border-slate-100 pb-2 text-xs text-slate-400">
                 <span>Unidad</span><span>Monto</span><span>Estado</span>
               </div>
@@ -195,17 +150,12 @@ export function LandingHero() {
                   <span className={`rounded px-2 py-0.5 text-xs font-medium ${r.sc}`}>{r.s}</span>
                 </div>
               ))}
-
               <div className="mt-3">
                 <div className="mb-1 flex justify-between text-xs text-slate-400">
-                  <span>Recaudación del período</span>
-                  <span>72%</span>
+                  <span>Recaudación del período</span><span>72%</span>
                 </div>
                 <div className="h-1.5 overflow-hidden rounded-full bg-slate-100">
-                  <div
-                    className="h-full rounded-full"
-                    style={{ width: "72%", background: "linear-gradient(90deg,#1D6FA4,#1D9E75)" }}
-                  />
+                  <div className="h-full rounded-full" style={{ width: "72%", background: "linear-gradient(90deg,#1D6FA4,#1D9E75)" }} />
                 </div>
               </div>
             </div>
