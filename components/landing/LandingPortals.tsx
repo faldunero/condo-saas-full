@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const portals = [
   {
-    icon: "🛡️",
+    icon: "/imagenes/super_admin.png",
     name: "Super Admin",
     desc: "Panel multi-tenant para la empresa dueña del SaaS. Gestión de administradoras, métricas de uso y facturación global.",
     href: "/super-admin",
@@ -16,7 +17,7 @@ const portals = [
     ],
   },
   {
-    icon: "💼",
+    icon: "/imagenes/administradora.png",
     name: "Administradora",
     desc: "Portal para empresas que administran edificios. CRUD de edificios, gestión de gastos, comunicaciones y documentos legales.",
     href: "/admin",
@@ -30,7 +31,7 @@ const portals = [
     ],
   },
   {
-    icon: "🏠",
+    icon: "/imagenes/residente.png",
     name: "Residente",
     desc: "App y portal web para copropietarios y arrendatarios. Pago en línea, reservas, avisos y participación en asambleas.",
     href: "/residente",
@@ -49,7 +50,8 @@ export function LandingPortals() {
   return (
     <section id="portales" className="bg-white px-8 py-16">
       <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-1.5 text-xs font-medium text-blue-700">
-        ⚡ Portales
+        <Image src="/imagenes/portales.png" alt="Portales" width={16} height={16} className="object-contain" />
+        Portales
       </div>
       <h2 className="mb-3 font-serif text-4xl font-semibold tracking-tight text-slate-900">
         Tres portales, <span className="text-blue-600">un ecosistema</span>
@@ -66,7 +68,9 @@ export function LandingPortals() {
             className="relative overflow-hidden rounded-2xl border border-slate-200 p-6"
           >
             <div className={`absolute left-0 right-0 top-0 h-1 bg-gradient-to-r ${p.accent}`} />
-            <div className="mb-5 text-3xl">{p.icon}</div>
+            <div className="mb-5">
+              <Image src={p.icon} alt={p.name} width={40} height={40} className="object-contain" />
+            </div>
             <h3 className="mb-2 text-base font-medium text-slate-900">{p.name}</h3>
             <p className="mb-5 text-sm font-light leading-relaxed text-slate-500">{p.desc}</p>
             <ul className="mb-6 space-y-2">
